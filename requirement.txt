@@ -1,3 +1,4 @@
 flask-wtf
 flask
 flask-mysqldb
+passlib
