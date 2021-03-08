@@ -1,3 +1,3 @@
-# TrailerAdmin
+# DjangoRestful
 
-TrailerAdmin System
+DjangoRestful API test project 
