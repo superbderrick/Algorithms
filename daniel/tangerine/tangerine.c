@@ -2,38 +2,30 @@
 #include <stdbool.h>
 #include <stdlib.h>
 
-void sort(int* array, int len);
+int compare(void* first, void* second)
+{
+    if (*(int*)first > *(int*)second)
+        return -1;
+    else if (*(int*)first < *(int*)second)
+        return 1;
+    else
+        return 0;
+}
 
 // tangerine_len은 배열 tangerine의 길이입니다.
 int solution(int k, int tangerine[], size_t tangerine_len) {
     int answer = 0;
-    int *size_list = (int*)malloc(sizeof(int)*tangerine_len);
-    int *num_of_size_list = (int*)malloc(sizeof(int)*tangerine_len);
-    
-    memset(size_list, 0, sizeof(int)*tangerine_len);
-    memset(num_of_size_list, 0, sizeof(int)*tangerine_len);
+    int num_of_size_list[10000001] = {0,};
 
-    //tangerine 크기 종류와 tangerine크기별 개수 계산
+    //tangerine크기별 개수 계산
     for (int i=0; i<tangerine_len; i++)
     {
-        for (int j=0; i<tangerine_len; j++)
-        {
-            if(size_list[j] == 0)
-            {
-                size_list[j] = tangerine[i];
-                num_of_size_list[j]++;
-                break;
-            }
-            else if(size_list[j] == tangerine[i])
-            {
-                num_of_size_list[j]++;
-                break;
-            }
-        }
+        int index = tangerine[i]-1;
+        num_of_size_list[tangerine[i]-1]++;
     }
 
     // tangerine 크기별 개수를 내림차순으로 정렬
-    sort(num_of_size_list, tangerine_len);
+    qsort(num_of_size_list, sizeof(num_of_size_list)/sizeof(int), sizeof(int), compare);
 
     // tagerine의 크기별 최소값 계산
     for (int i=0; i<tangerine_len; i++)
@@ -44,28 +36,6 @@ int solution(int k, int tangerine[], size_t tangerine_len) {
         if (k <= 0)
             break;
     }
-    
-    free(size_list);
-    free(num_of_size_list);
 
     return answer;
-}
-
-void sort(int* array, int len)
-{
-    for (int i=0; i<len; i++)
-    {
-        if (array[i] == 0)
-            break;
-        for (int j=i; j<len; j++)
-        {
-            if (array[j] > array[i])
-            {
-                int temp = array[i];
-                array[i] = array[j];
-                array[j] = temp;
-            }
-        }
-    }
-    
 }
