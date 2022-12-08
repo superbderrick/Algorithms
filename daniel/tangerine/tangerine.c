@@ -44,6 +44,9 @@ int solution(int k, int tangerine[], size_t tangerine_len) {
         if (k <= 0)
             break;
     }
+    
+    free(size_list);
+    free(num_of_size_list);
 
     return answer;
 }
