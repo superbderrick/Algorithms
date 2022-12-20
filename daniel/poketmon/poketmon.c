@@ -1,17 +1,15 @@
 #include <vector>
 #include <algorithm>
+#include <unordered_set>
 
 using namespace std;
 
 int solution(vector<int> nums)
 {
     int answer = 0;
-    int n = nums.size();
-
-    sort(nums.begin(), nums.end());
-    nums.erase(unique(nums.begin(), nums.end()), nums.end());
+    unordered_set<int> sorted_list(nums.begin(), nums.end());
     
-    answer = nums.size() >= n/2 ? n/2 : nums.size();
+    answer = min(nums.size() / 2, sorted_list.size());
 
     return answer;
 }
