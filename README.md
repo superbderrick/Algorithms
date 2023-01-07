@@ -1,6 +1,7 @@
 # Algorithms
 
-Algorithms Study with Participants (Derrick, and Daniel)
+Let's study Algorithms study
+- Participants (Derrick, and Daniel)
 
 
 
