@@ -1,30 +1,19 @@
 #include <string>
 #include <vector>
 #include <iostream>
-#include <algorithm>
+#include <map>
 
 using namespace std;
 
 vector<int> solution(int n, vector<string> words) {
-    vector<string> spit;
-    int number = 1;
-    int turn = 1;
+    map<string, bool> spit;
 
-    for(auto i: words) {
-        if (spit.size() == 0) {
-            spit.push_back(i);
-        } else if (spit.back()[spit.back().length()-1] != i[0] || count(spit.begin(), spit.end(), i) > 0) {
-            return {number, turn};
-            break;
+    spit[words[0]] = true;
+    for(int i=1; i<words.size(); i++) {
+        if (spit[words[i]] == true || words[i-1][words[i-1].length()-1] != words[i][0]) {
+            return {(i%n)+1, (i/n)+1};
         } else {
-            spit.push_back(i);
-        }
-        
-        if (number % n == 0) {
-            number = 1;
-            turn++;
-        } else {
-            number++;
+            spit[words[i]] = true;
         }
     }
 
