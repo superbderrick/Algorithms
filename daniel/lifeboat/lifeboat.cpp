@@ -1,8 +1,6 @@
 #include <string>
 #include <vector>
 #include <algorithm>
-#include <iostream>
-#include <map>
 
 using namespace std;
 
@@ -11,15 +9,11 @@ int solution(vector<int> people, int limit) {
     int answer = 0;
     int front = 0;
     int end = people.size()-1;
-
+    
     sort(people.begin(), people.end());
 
     while(front<=end) {
-        if (people[end] + people[front] <= limit) {
-            front++; end--;
-        } else { 
-            end--;
-        }
+        if (people[end--] + people[front] <= limit) front++;
         answer++;
     }
 
