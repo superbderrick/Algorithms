@@ -18,7 +18,7 @@ Maximum and Minimum value
 - Programmers
     - https://school.programmers.co.kr/learn/courses/30/lessons/12939
 - C# 
-    - https://school.programmers.co.kr/learn/courses/30/lessons/138476
+    - https://github.com/superbderrick/Algorithms/blob/master/derrick/minmax/minmax.cs
 - C++ 
     - https://github.com/superbderrick/Algorithms/tree/master/daniel/max_min_value
 
