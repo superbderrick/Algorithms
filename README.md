@@ -29,4 +29,6 @@ JadenCase
 - C# 
     - https://school.programmers.co.kr/learn/courses/30/lessons/138476
 - C++ 
-    - https://github.com/superbderrick/Algorithms/tree/master/daniel/max_min_value
+    - https://github.com/superbderrick/Algorithms/blob/master/daniel/JadenCase/JadenCase.cpp
+
+    
