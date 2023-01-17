@@ -23,3 +23,10 @@ Maximum and Minimum value
     - https://github.com/superbderrick/Algorithms/tree/master/daniel/max_min_value
 
 
+JadenCase
+- Programmers
+    - https://school.programmers.co.kr/learn/courses/30/lessons/12951
+- C# 
+    - https://school.programmers.co.kr/learn/courses/30/lessons/138476
+- C++ 
+    - https://github.com/superbderrick/Algorithms/tree/master/daniel/max_min_value
