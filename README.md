@@ -30,5 +30,13 @@ JadenCase
     - https://github.com/superbderrick/Algorithms/blob/master/derrick/JadenCase/JadenCase.cs
 - C++ 
     - https://github.com/superbderrick/Algorithms/blob/master/daniel/JadenCase/JadenCase.cpp
+    
+MakeMinimumNumber
+- Programmers
+    - https://school.programmers.co.kr/learn/courses/30/lessons/12941
+- C# 
+    - https://school.programmers.co.kr/learn/courses/30/lessons/138476
+- C++ 
+    - https://github.com/superbderrick/Algorithms/blob/master/daniel/make_min_value/make_min_value.cpp
 
     
