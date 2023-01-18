@@ -1,30 +1,13 @@
-#include <iostream>
 #include <string>
 #include <vector>
-#include <map>
-#include <cmath>
 
 using namespace std;
+
+int gcd(int x, int y) { return x % y == 0 ? y : gcd(y, x % y); }
+int lcm(int x, int y) { return x * y / gcd(x, y); }
 int solution(vector<int> arr) {
-    int answer = 1;
-    map<int, int> ret;
-
-    for (auto j: arr) {
-        int i=2;
-        map<int, int> temp;
-        while (j != 1) {
-            if (j%i == 0) {
-                if (ret[i] < ++temp[i]) ret[i]=temp[i];
-                j/=i;
-            } else {
-                i++;
-            }
-        }
-    }
-
-    for (auto i: ret) {
-        answer *= pow(i.first, i.second);
-    }
-
+    int answer = arr[0];
+    for (int i = 1; i < arr.size(); i++)
+        answer = lcm(answer, arr[i]);
     return answer;
 }
