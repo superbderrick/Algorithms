@@ -39,4 +39,10 @@ MakeMinimumNumber
 - C++ 
     - https://github.com/superbderrick/Algorithms/blob/master/daniel/make_min_value/make_min_value.cpp
 
-    
+CorrectParenthesis
+- Programmers
+    - https://school.programmers.co.kr/learn/courses/30/lessons/12909
+- C# 
+    - https://github.com/superbderrick/Algorithms/blob/master/derrick/CorrectParenthesis/CorrectParenthesis.cs
+- C++ 
+    - https://github.com/superbderrick/Algorithms/blob/3d2734b2786509e5990ebe8f5ddc62c93e7d5be2/daniel/correct_bracket/correct_bracket.cpp
