@@ -1,6 +1,6 @@
 # Algorithms
 
-Let's study Algorithms study
+Let's study Algorithms and Data strucure 
 - Participants (Derrick, and Daniel)
 
 
