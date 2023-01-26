@@ -53,7 +53,7 @@ Binary Repeat
 - C# 
     - https://github.com/superbderrick/Algorithms/blob/master/derrick/RepeatBin/RepeatBin.cs
 - C++ 
-    - https://github.com/superbderrick/Algorithms/blob/3d2734b2786509e5990ebe8f5ddc62c93e7d5be2/daniel/correct_bracket/correct_bracket.cpp
+    - https://github.com/superbderrick/Algorithms/tree/master/daniel/repeat_binary_transform
 
 
 Fibonachi
@@ -62,4 +62,4 @@ Fibonachi
 - C# 
     - https://github.com/superbderrick/Algorithms/blob/master/derrick/Fibonachi/Fibonachi.cs
 - C++ 
-    - https://github.com/superbderrick/Algorithms/blob/3d2734b2786509e5990ebe8f5ddc62c93e7d5be2/daniel/correct_bracket/correct_bracket.cpp
+    - https://github.com/superbderrick/Algorithms/tree/master/daniel/fibonacci_number
