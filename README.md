@@ -51,7 +51,7 @@ Binary Repeat
 - Programmers
     - https://school.programmers.co.kr/learn/courses/30/lessons/70129
 - C# 
-    - https://github.com/superbderrick/Algorithms/blob/master/derrick/CorrectParenthesis/CorrectParenthesis.cs
+    - https://github.com/superbderrick/Algorithms/blob/master/derrick/RepeatBin/RepeatBin.cs
 - C++ 
     - https://github.com/superbderrick/Algorithms/blob/3d2734b2786509e5990ebe8f5ddc62c93e7d5be2/daniel/correct_bracket/correct_bracket.cpp
 
@@ -60,6 +60,6 @@ Fibonachi
 - Programmers 
     - https://school.programmers.co.kr/learn/courses/30/lessons/12945
 - C# 
-    - https://github.com/superbderrick/Algorithms/blob/master/derrick/CorrectParenthesis/CorrectParenthesis.cs
+    - https://github.com/superbderrick/Algorithms/blob/master/derrick/Fibonachi/Fibonachi.cs
 - C++ 
     - https://github.com/superbderrick/Algorithms/blob/3d2734b2786509e5990ebe8f5ddc62c93e7d5be2/daniel/correct_bracket/correct_bracket.cpp
