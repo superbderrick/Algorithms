@@ -63,3 +63,12 @@ Fibonachi
     - https://github.com/superbderrick/Algorithms/blob/master/derrick/Fibonachi/Fibonachi.cs
 - C++ 
     - https://github.com/superbderrick/Algorithms/tree/master/daniel/fibonacci_number
+    
+  
+NexBigtNumber
+- Programmers 
+    - https://school.programmers.co.kr/learn/courses/30/lessons/12911
+- C# 
+    - https://github.com/superbderrick/Algorithms/tree/master/derrick/NextBigNumber
+
+    
