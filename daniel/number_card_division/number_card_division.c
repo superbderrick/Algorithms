@@ -4,66 +4,65 @@
 
 int compare(void* first, void* second)
 {
-    if(*(int*)first > *(int*)second)
-        return 1;
-    else if(*(int*)first < *(int*)second)
+    if (*(int*)first < *(int*)second)
         return -1;
+    else if (*(int*)first > *(int*)second)
+        return 1;
+    
     return 0;
 }
 
-int is_depense_ok(int n, int k, int mid, int* enemy)
+/*
+ * arrayA, arrayB의 가장 작은 숫자카드의 공약수를 비교하여 arrayA, arrayB 배열의 원소와 나누어떨어지는지 비교.
+*/
+int getAnswer(int* arrayA, int* arrayB, size_t array_len)
 {
-    // 적 병사를 오름차순 정렬.
-    int *sorted_enemy = (int*)malloc(sizeof(int)*(mid+1));
-    memcpy(sorted_enemy, enemy, sizeof(int)*(mid+1));
-    qsort(sorted_enemy, mid+1, sizeof(int), compare);
-    
-    int remain_round = mid+1;
     int ret = 0;
+    int maxIdx = 0;
+
+    // arrayA, arrayB를 오름차순으로 정렬
+    qsort(arrayA, array_len, sizeof(int), compare);
+    qsort(arrayB, array_len, sizeof(int), compare);
     
-    for (int i=0; i<=mid; i++)
+    maxIdx = arrayA[0] > arrayB[0] ? arrayA[0] : arrayB[0]; // arrayA[0], arrayB[0]의 max 값으로 index 설정
+    
+    for (int i=maxIdx; i>=2; i--) // 1, 0으로 나누어떨어지는 경우는 고려하지 않아 i>=2
     {
-        // 병사 차감시 남은 라운드를 카운트
-        if (n>=sorted_enemy[i])
+        int count = 0;
+        int countType = -1;
+        // arrayA[0], arrayB[0]가 둘 다 나누어 떨어지지 않거나 둘 다 나누어 떨어지는 경우는 제외.
+        if (arrayA[0]%i != 0 && arrayB[0]%i != 0 || arrayA[0]%i == 0 && arrayB[0]%i == 0)
+            continue;
+
+        // count 할 수 있는 경우에 따라 count 하는 방법(countType) 설정
+        if (arrayA[0]%i == 0 && arrayB[0]%i != 0) // arrayA[0]가 i로 나누어 떨어지고 arrayB[0]가 i로 나누어 떨어지지 않는 경우
+            countType = 1;
+        else if (arrayB[0]%i == 0 && arrayA[0]%i != 0) // arrayB[0]가 i로 나누어 떨어지고 arrayA[0]가 i로 나누어 떨어지지 않는 경우
+            countType = 0;
+        
+        for (int j=0; j<array_len; j++)
         {
-            n-= sorted_enemy[i];
-            remain_round--;
+            if (countType == 0)
+                arrayA[j]%i !=0 && arrayB[j]%i == 0 ? count++ : count; // arrayB에서만 i로 나누어 떨어지는 원소의 개수를 count
+            else
+                arrayB[j]%i !=0 && arrayA[j]%i == 0 ? count++ : count; // arrayA에서만 i로 나누어 떨어지는 원소의 개수를 count
+        }
+        
+        // 모든 원소만큼 count 했을때 나누어 떨어지는 i를 계산 후 반복문 종료.
+        if (count == array_len)
+        {
+            ret = i;
+            break;
         }
     }
-    free(sorted_enemy);
-    
-    // 남은 라운드를 무적권으로 클리어 할 수 있으면(1), 없으면(0) 리턴
-    return k >= remain_round;
+
+    return ret;
 }
 
-// enemy_len은 배열 enemy의 길이입니다.
-int solution(int n, int k, int enemy[], size_t enemy_len) {
-    int answer = 0;
-    int begin = 0;
-    int end = enemy_len;
-    int mid = 0;
-    
-    // 2진 search로 성공가능한 round 탐색
-    while (begin < end)
-    {
-        mid = (begin + end) / 2;
-        
-        // 특정 라운드에서 성공 가능한지 여부를 체크하여 2진트리 인덱스 재설정
-        if (is_depense_ok(n, k, mid, enemy))
-        {
-            begin = mid + 1;
-        }
-        else
-        {
-            end = mid;
-        }
-    }
-
-    if (k>=enemy_len) // 무적권만으로 전체 라운드를 클리어할 경우
-        answer = enemy_len;
-    else // 성공한 round 리턴
-        answer = begin;
+// arrayA_len은 배열 arrayA의 길이입니다.
+// arrayB_len은 배열 arrayB의 길이입니다.
+int solution(int arrayA[], size_t arrayA_len, int arrayB[], size_t arrayB_len) {
+    int answer = getAnswer(arrayA, arrayB, arrayA_len);
 
     return answer;
 }
-
