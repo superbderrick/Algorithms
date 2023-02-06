@@ -2,31 +2,30 @@
 #include <vector>
 #include <iostream>
 #include <algorithm>
+#include <queue>
+
 using namespace std;
 
 int solution(vector<int> priorities, int location) {
     int answer = 0;
-    vector<pair<int,int>> priority_pair;
-    vector<pair<int,int>> sorted_priority_pair;
+    queue<int> priorities_index;
+    vector<int> sorted_priorities_index;
 
-    for (int i=0; i<priorities.size(); i++)
-        priority_pair.push_back({priorities[i], i});
+    for (int i=0; i<priorities.size(); i++) priorities_index.push(i);
     
-    while(!priority_pair.empty()) {
-        bool large_value_found = false;
-        for (int j=1; j<priority_pair.size(); j++)
-            if (priority_pair[0].first < priority_pair[j].first) { large_value_found = true; break; }
-
-        if (large_value_found) {
-            rotate(priority_pair.begin(), priority_pair.begin()+1, priority_pair.end());
+    while(!priorities_index.empty()) {
+        int target_index = priorities_index.front();
+        if (priorities[target_index] != *max_element(priorities.begin(), priorities.end())) {
+            priorities_index.push(target_index);
         } else {
-            sorted_priority_pair.push_back(priority_pair[0]);
-            priority_pair.erase(priority_pair.begin());
+            sorted_priorities_index.push_back(target_index);
+            priorities[target_index] = -1;
         }
+        priorities_index.pop();
     }
     
-    for (int i=0; i<sorted_priority_pair.size(); i++)
-        if (sorted_priority_pair[i].second == location) { answer = i+1; break; }
+    for (int i=0; i<sorted_priorities_index.size(); i++)
+        if (sorted_priorities_index[i] == location) { answer = i+1; break; }
 
     return answer;
 }
