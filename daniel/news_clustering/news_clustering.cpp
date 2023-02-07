@@ -5,41 +5,38 @@
 
 using namespace std;
 
-map<string,int> get_string_map(string input, int* sum) {
+map<string,int> get_string_map(string input, int* num_of_map) {
     map<string,int> ret;
-    
+
     for (int i=0; i<input.size()-1; i++) {
-        if (isalpha(toupper(input[i])) && isalpha(toupper(input[i+1]))) {
-            string key = "";
-            key+=toupper(input[i]);
-            key+=toupper(input[i+1]);
+        if (isalpha(input[i]) && isalpha(input[i+1])) {
+            string key = {(char)toupper(input[i]), (char)toupper(input[i+1])};
             ret[key]++;
-            (*sum)++;
+            (*num_of_map)++;
         }
     }
-    
+
     return ret;
 }
 
 int solution(string str1, string str2) {
     int answer = 0;
-    
-    int sum1 = 0;
-    int sum2 = 0;
-    map<string,int> map_str1 = get_string_map(str1, &sum1);
-    map<string,int> map_str2 = get_string_map(str2, &sum2);
 
-    double union_ = sum1 + sum2;
-    double intersection_ = 0;
+    int intersection_ = 0;
+    int union_ = 0;
 
-    for (auto i:map_str1) {
-       if (map_str2.find(i.first) != map_str2.end()) {
-           intersection_ += min(i.second, map_str2[i.first]);
-        }
-    }
+    int num_of_map_str1 = 0;
+    int num_of_map_str2 = 0;
+    map<string,int> map_str1 = get_string_map(str1, &num_of_map_str1);
+    map<string,int> map_str2 = get_string_map(str2, &num_of_map_str2);
+   
+    for (auto i:map_str1)
+        intersection_ += min(i.second, map_str2[i.first]);
 
-    double J = (union_-intersection_) > 0 ? (intersection_/(union_ - intersection_)) : 1.0;
-    answer = J * 65536;
+    // A ∪ B = A + B - A ∩ B
+    union_ = num_of_map_str1 + num_of_map_str2 - intersection_;
+
+    answer = union_ > 0 ? (intersection_* 65536/union_) : 65536;
 
     return answer;
 }
