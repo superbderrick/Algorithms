@@ -3,30 +3,21 @@
 
 using namespace std;
 
-void get_answer(vector<int> numbers, int target, int* count) {  
-    if (numbers.size() == 1) {
-        if (numbers[0] == target) (*count)++;
-    } else {
-        int numbers_begin_plus, numbers_begin_minus;
-        numbers_begin_plus = numbers_begin_minus = numbers[0];
-        numbers.erase(numbers.begin());
-
-        numbers_begin_plus += numbers[0];
-        numbers_begin_minus -= numbers[0];
-
-        numbers[0] = numbers_begin_plus;
-        get_answer(numbers, target, count);
-
-        numbers[0] = numbers_begin_minus;
-        get_answer(numbers, target, count);
+void get_answer(vector<int> &numbers, int &target, int sum, int index, int* count) {
+    if(index == numbers.size()){
+        if(sum == target) (*count)++;
+        return;
     }
+
+    get_answer(numbers, target, sum + numbers[index], index+1, count);
+    get_answer(numbers, target, sum - numbers[index], index+1, count);
 }
 
 int solution(vector<int> numbers, int target) {
     int answer = 0;
-    get_answer(numbers, target, &answer);
-    numbers[0] = -numbers[0];
-    get_answer(numbers, target, &answer);
-    
+
+    get_answer(numbers, target, numbers[0] , 1, &answer);
+    get_answer(numbers, target, -numbers[0], 1, &answer);
+
     return answer;
 }
